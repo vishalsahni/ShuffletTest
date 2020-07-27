@@ -1,0 +1,161 @@
+﻿<!DOCTYPE HTML>
+
+<head>
+<style>
+
+.CardBorder {
+border-style: solid;
+font-size: large;
+ 
+
+}
+    .CardColor0 {
+      background-color :aqua   
+    }
+    .CardColor1 {
+        background-color: #2B8EAD
+    }
+    .CardColor2 {
+        background-color: #333333
+    }
+
+    .CardColor3 {
+        background-color: #6F98A8
+    }
+    .CardColor4 {
+        background-color: #FFFFFF
+    }
+    .CardColor5 {
+        background-color: #BFBFBF
+    }
+    .CardColor6 {
+        background-color: #EFEFEF
+    }
+    .CardColor7 {
+        background-color: #2F454E
+    }
+    .CardColor8 {
+        background-color: #72C3DC
+    }
+    
+   
+   
+ 
+    .button {
+        border: solid;
+        color: black;
+        padding: 15px 32px;
+        text-align: center;
+        text-decoration: none;
+        font-size: 16px;
+        margin: 4px 2px;
+        cursor: pointer;
+    }
+.btn
+{
+    background-color : aqua
+}
+
+
+
+</style>
+<meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+</head>
+<body>
+    <button type="button" class="button btn" onclick="sort()">Sort</button>
+
+    <button type="button"  class="button btn" onclick="shuffle()">Shuffle</button>
+    <div id="deck"></div>
+
+    <!--div class="container">
+      <div class="row col-md-3">
+        <div class="col-md-4 CardBorder" ">1</div>
+        <div class="col-md-4 CardBorder">2</div>
+    <div class="col-md-4 CardBorder">3</div>
+      </div>
+    </div>-->
+
+
+    <script>
+       
+        var numbers = [1, 2, 3, 4, 5, 6,7, 8, 9];
+        var deck = new Array();
+        shuffle();
+
+        function shuffle() {
+            document.getElementById("deck").innerHTML = ''
+            var i = 0
+                , j = 0
+                , temp = null
+
+            for (i = numbers.length - 1; i > 0; i -= 1) {
+                j = Math.floor(Math.random() * (i + 1))
+                temp =  numbers[i]
+                numbers[i] =  numbers[j]
+                numbers[j] = temp
+            }
+            increment = 0;
+            for (var i = 0; i < 3; i++) {
+                var card = document.createElement("div");
+                card.className = "container";
+                var value = document.createElement("div");
+                value.className = "row col-md-3";
+                card.appendChild(value);
+                for (var j = 0; j < 3; j++) {
+                    var suit = document.createElement("div");
+                    var colorClass = "CardColor" + increment;
+                    suit.className = "col-md-4 CardBorder " + colorClass;
+
+                      
+                    suit.innerHTML = numbers[increment];
+                    increment++;
+
+                    value.appendChild(suit);
+                    
+
+                }
+                document.getElementById("deck").appendChild(card);
+            }
+
+
+        }
+        function sort() {
+            document.getElementById("deck").innerHTML = ''
+            //deck = numbers;
+            increment = 0;
+            for (var i = 0; i < 3; i++) {
+                var card = document.createElement("div");
+                card.className = "container";
+                var value = document.createElement("div");
+                value.className = "row col-md-3";
+                card.appendChild(value);
+                for (var j = 0; j < 3; j++) {
+                    var suit = document.createElement("div");
+                    var colorClass = "CardColor" + increment;
+                    suit.className = "col-md-4 CardBorder " + colorClass;
+
+               
+
+                    suit.innerHTML = increment + 1;
+                    increment++;
+
+                    value.appendChild(suit);
+                }
+                document.getElementById("deck").appendChild(card);
+            }
+
+
+
+
+
+
+        }
+
+
+
+
+        var x = Math.floor((Math.random() * 10) + 1);
+    </script>
+</body>
